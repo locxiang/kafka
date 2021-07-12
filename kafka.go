@@ -27,6 +27,8 @@ func Init(addrs []string, groupId string) (err error) {
 	p, err2 := kafka.NewProducer(&kafka.ConfigMap{
 		//"plugin.library.paths": "monitoring-interceptor",
 		"bootstrap.servers": strings.Join(addrs, ","),
+                "compression.type":         "gzip", //压缩
+		"compression.codec":        "gzip", //压缩
 	})
 	if err2 != nil {
 		return err2
