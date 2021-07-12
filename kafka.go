@@ -85,6 +85,10 @@ func Init(addrs []string, groupId string) (err error) {
 
 }
 
+func Close() {
+	Singleton().Close()
+}
+
 // 获取kafka
 func Singleton() *kafkaDrive {
 	if k == nil {
