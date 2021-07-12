@@ -27,8 +27,10 @@ func Init(addrs []string, groupId string) (err error) {
 	p, err2 := kafka.NewProducer(&kafka.ConfigMap{
 		//"plugin.library.paths": "monitoring-interceptor",
 		"bootstrap.servers": strings.Join(addrs, ","),
-		"compression.type":  "gzip", //压缩
+		"builtin.features":  "gzip", //压缩
 		"compression.codec": "gzip", //压缩
+		"compression.type":  "gzip", //压缩
+
 	})
 	if err2 != nil {
 		return err2
@@ -56,8 +58,7 @@ func Init(addrs []string, groupId string) (err error) {
 		"client.id":                clientId,
 		"session.timeout.ms":       15 * 1000,
 		"go.events.channel.enable": true,
-		"compression.type":         "gzip", //压缩
-		"compression.codec":        "gzip", //压缩
+		"builtin.features":         "gzip", //压缩
 
 		//"plugin.library.paths":     "monitoring-interceptor",
 		//"go.application.rebalance.enable": true,
